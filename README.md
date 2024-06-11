@@ -5,6 +5,13 @@ Original version:
 - https://chromewebstore.google.com/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb
 
 Modifications:
-- Change the maximum selected character from 250 to 500.
-- Reduce the font size of translate popup from 18px to 15px.
-- Add pinyin when translating Chinese.
+- Change the maximum selected characters from 250 to 500.
+- Reduce the font size of translate window from 18px to 15px.
+- Add Pinyin when translating Chinese.
+- Fix bug detect incorrect source language => cannot select to translate sometimes
+
+Before
+![](images/chrome-translate-before.png)
+
+After
+![](images/chrome-translate-after.png)

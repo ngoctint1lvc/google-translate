@@ -717,6 +717,7 @@
 .gtx-pinyin {
     display: inline;
     font-size: 12px;
+    font-family: "Noto Sans", sans-serif;
     margin: 5px auto;
     padding: 5px 0;
 }

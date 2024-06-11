@@ -7023,10 +7023,9 @@
         if ("0" != wi.g) {
             var b = window.getSelection(), c = b.toString().trim();
             Xm(c) && (Ai ? Ym(b, function (d) {
-                if (!xi(d)) {
-                    if ("zh" == d || "zh-Hant" == d) d = "zh-CN";
-                    Zm(a, b, c, d)
-                }
+                // skip check the destination language
+                if ("zh" == d || "zh-Hant" == d) d = "zh-CN";
+                Zm(a, b, c, d)
             }) : !Ai && "1" == wi.g && wi.u && xi(Sm) || Zm(a, b, c))
         }
     }, an = function (a, b, c) {
@@ -7034,8 +7033,7 @@
             var d = a.innerText || a.textContent || "";
             d = decodeURIComponent(encodeURIComponent(d.trim()));
             chrome.i18n.detectLanguage(d, function (e) {
-                e.isReliable ? c(e.languages[0].language) : 0 < b ? an(a.parentNode,
-                    b - 1, c) : c("")
+                e.isReliable ? c(e.languages[0].language) : c("auto")
             })
         } else c("")
     }, Zm = function (a, b, c, d) {
@@ -7061,37 +7059,33 @@
         chrome.i18n.detectLanguage(c, function (d) {
             var e = null;
             if (d.isReliable) return e = d.languages[0].language, b(e);
-            an(a.anchorNode, 3, function (f) {
-                b(f)
-            })
+            b("auto")
         })
     }, Xm = function (a) {
         var b = /^[0-9!@#$\u20ac\u00a3%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
         return 0 < a.length && !xe("gtx-bubble") && 500 > a.length && !b.test(a) && 400 < window.innerWidth
     }, Vm = function (a, b) {
-        if ("1" == wi.g || b.src != ui(wi)) {
-            var c = Fe(document, "div");
-            c.id = "gtx-anchor";
-            c.style.position =
-                "absolute";
-            c.style.visibility = "hidden";
-            c.style.left = String(a.left + Ae(document).scrollLeft + "px");
-            c.style.top = String(a.top + Ae(document).scrollTop + "px");
-            c.style.width = String(a.right - a.left + 1 + "px");
-            c.style.height = String(a.height + "px");
-            document.body.appendChild(c);
-            window.g = new Rm(c);
-            zh(window.g, document.body);
-            a = window.g;
-            a.F = document.createElement("div");
-            a.F.id = "gtx-host";
-            c = Mb({"min-width": "200px", "max-width": "400px"});
-            a.F.style.cssText = Jb(c);
-            a.K = a.F.attachShadow({mode: "closed"});
-            bn(chrome.runtime.getURL("popup_css_compiled.css"),
-                v(a.ia, a, b));
-            window.g.fc(!0)
-        }
+        var c = Fe(document, "div");
+        c.id = "gtx-anchor";
+        c.style.position =
+            "absolute";
+        c.style.visibility = "hidden";
+        c.style.left = String(a.left + Ae(document).scrollLeft + "px");
+        c.style.top = String(a.top + Ae(document).scrollTop + "px");
+        c.style.width = String(a.right - a.left + 1 + "px");
+        c.style.height = String(a.height + "px");
+        document.body.appendChild(c);
+        window.g = new Rm(c);
+        zh(window.g, document.body);
+        a = window.g;
+        a.F = document.createElement("div");
+        a.F.id = "gtx-host";
+        c = Mb({"min-width": "200px", "max-width": "400px"});
+        a.F.style.cssText = Jb(c);
+        a.K = a.F.attachShadow({mode: "closed"});
+        bn(chrome.runtime.getURL("popup_css_compiled.css"),
+            v(a.ia, a, b));
+        window.g.fc(!0)
     }, bn = function (a, b) {
         var c = new XMLHttpRequest;
         c.open("GET", a, !0);
