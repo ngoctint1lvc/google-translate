@@ -7,3 +7,4 @@ Original version:
 Modifications:
 - Change the maximum selected character from 250 to 500.
 - Reduce the font size of translate popup from 18px to 15px.
+- Add pinyin when translating Chinese.

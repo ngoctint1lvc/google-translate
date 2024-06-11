@@ -6535,7 +6535,7 @@
                 g.set("sl", d);
                 g.set("tl", f);
                 g.set("hl", e);
-                e = ["t", "bd"];
+                e = ["t", "bd", "rm"]; // add dt=rm param to get pinyin result
                 g.remove("dt");
                 0 < e.length && (g.o = null, g.g.set("dt", $a(e)), g.l = Ia(g.l) + e.length);
                 g.set("dj", "1");
@@ -6545,10 +6545,16 @@
             }
         };
     ym.prototype.g = function (a, b, c, d) {
+        var pinyinText;
         if (null != d) {
             for (var e = d.src, f = ui(yi), h = [], g = [], l = d.sentences, n = 0; n < l.length; n++) h.push(l[n].orig), g.push(l[n].trans);
-            h = h.join("");
-            g = g.join("");
+            h = h.join(""); // original text
+            g = g.join(""); // translated text
+            pinyinText = d.sentences[d.sentences.length - 1];
+            pinyinText = pinyinText.src_translit? pinyinText.src_translit: undefined; // pinyin text
+            if (pinyinText && h.length > 30) {
+                pinyinText = undefined;
+            }
             l = zi("tl")[f].toUpperCase();
             var p = zi("sl");
             n = [];
@@ -6573,7 +6579,15 @@
                             n[u];
                         q += he(x, "auto") ? "" : '<option value="' + I(x[0]) + '"' + (he(x[0], e) ? " selected" : "") + ">" + fe(x[1]) + "</option>"
                     }
-                    q += '</select></div><div class="gtx-source-audio"><div class="jfk-button-img"></div></div><div class="gtx-body">' + fe(b) + '</div><br><div class="gtx-language">' + fe(l) + '</div><div class="gtx-target-audio"><div class="jfk-button-img"></div></div><div class="gtx-body">' + fe(g) + "</div>";
+                    q += '</select></div>';
+                    q += '<div class="gtx-source-audio"><div class="jfk-button-img"></div></div>';
+                    q += '<div class="gtx-body">' + fe(b) + '</div><br>'; // b is the original text
+                    if (pinyinText) {
+                        q += '<div class="gtx-pinyin">' + fe(pinyinText) + '</div><br>';
+                    }
+                    q += '<div class="gtx-language">' + fe(l) + '</div>'; // l = "VIETNAMESE"
+                    q += '<div class="gtx-target-audio"><div class="jfk-button-img"></div></div>';
+                    q += '<div class="gtx-body">' + fe(g) + "</div>";
                     if (d) {
                         q += '<table style="width: 95%">';
                         l = d.length;

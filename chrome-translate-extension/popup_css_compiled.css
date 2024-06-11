@@ -714,6 +714,13 @@
     padding: 5px 0
 }
 
+.gtx-pinyin {
+    display: inline;
+    font-size: 12px;
+    margin: 5px auto;
+    padding: 5px 0;
+}
+
 .gtx-pos {
     color: #636363;
     font-style: italic;
