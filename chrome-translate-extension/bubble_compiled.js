@@ -4,6 +4,7 @@
  Copyright The Closure Library Authors.
  SPDX-License-Identifier: Apache-2.0
 */
+    let gtxSourceAudio;
     var k, aa = function (a) {
         var b = 0;
         return function () {
@@ -6611,6 +6612,7 @@
             d = xe("gtx-lang-selector", c);
             Gg(d, "change", v(this.l, this, a, b, c), !1, this);
             b = new mi;
+            gtxSourceAudio = b;
             d = xe("gtx-source-audio", c);
             Ah(b, d);
             pi(b, h, e);
@@ -7120,4 +7122,17 @@
     }, dn = ["disposeWindowBubble"], en = r;
     dn[0] in en || "undefined" == typeof en.execScript || en.execScript("var " + dn[0]);
     for (var fn; dn.length && (fn = dn.shift());) dn.length || void 0 === cn ? en[fn] && en[fn] !== Object.prototype[fn] ? en = en[fn] : en = en[fn] = {} : en[fn] = cn;
+    document.addEventListener("keyup", e => {
+        if (e.code === "KeyS") {
+            let popup = document.querySelector(".jfk-bubble.gtx-bubble");
+            if (popup && gtxSourceAudio) {
+                gtxSourceAudio.Bc();
+                // let oldOpacity = audioButton.style.opacity;
+                // audioButton.style.opacity = '0.9';
+                // setTimeout(() => {
+                //     audioButton.style.opacity = oldOpacity;
+                // }, 1000);
+            }
+        }
+    })
 })();
