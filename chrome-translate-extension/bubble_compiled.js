@@ -5,6 +5,7 @@
  SPDX-License-Identifier: Apache-2.0
 */
     let gtxSourceAudio;
+    let gtxSourceAudioElement;
     var k, aa = function (a) {
         var b = 0;
         return function () {
@@ -6614,6 +6615,7 @@
             b = new mi;
             gtxSourceAudio = b;
             d = xe("gtx-source-audio", c);
+            gtxSourceAudioElement = d;
             Ah(b, d);
             pi(b, h, e);
             b = new mi;
@@ -7127,11 +7129,11 @@
             let popup = document.querySelector(".jfk-bubble.gtx-bubble");
             if (popup && gtxSourceAudio) {
                 gtxSourceAudio.Bc();
-                // let oldOpacity = audioButton.style.opacity;
-                // audioButton.style.opacity = '0.9';
-                // setTimeout(() => {
-                //     audioButton.style.opacity = oldOpacity;
-                // }, 1000);
+                let oldOpacity = gtxSourceAudioElement.style.opacity;
+                gtxSourceAudioElement.style.opacity = '0.5';
+                setTimeout(() => {
+                    gtxSourceAudioElement.style.opacity = oldOpacity;
+                }, 100);
             }
         }
     })
