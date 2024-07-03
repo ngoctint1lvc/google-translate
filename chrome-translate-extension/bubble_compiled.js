@@ -7128,6 +7128,7 @@
         if (e.code === "KeyS") {
             let popup = document.querySelector(".jfk-bubble.gtx-bubble");
             if (popup && gtxSourceAudio) {
+                e.stopImmediatePropagation();
                 gtxSourceAudio.Bc();
                 let oldOpacity = gtxSourceAudioElement.style.opacity;
                 gtxSourceAudioElement.style.opacity = '0.5';
