@@ -6526,6 +6526,7 @@
         ym = function () {
         }, zm = function (a, b, c, d) {
             if ("" != a) {
+                a = a.replace(/[\n\r]+/g, " ").replace(/\s+/g, " ").trim();
                 window.selection = a;
                 a = new tm;
                 var e = chrome.i18n.getUILanguage ? chrome.i18n.getUILanguage() : "en";
