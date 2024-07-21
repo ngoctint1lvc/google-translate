@@ -7042,8 +7042,13 @@
             })
         } else c("")
     }, Zm = function (a, b, c, d) {
+        // console.log("b.getRangeAt(0).startContainer", b.getRangeAt(0).startContainer);
         b = b.getRangeAt(0).getBoundingClientRect();
-        if (0 != b.top || 0 != b.left) if ("1" == wi.g) {
+        // Fix bug: cannot get client rect for shadow DOM
+        if (0 == b.top && 0 == b.left) {
+            b = new DOMRect(a.clientX, a.clientY, 0, 0);
+        }
+        if ("1" == wi.g) {
             var e = Fe(document, "div");
             e.className = "gtx-trans-icon";
             var f = Fe(document, "div");
