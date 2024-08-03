@@ -7073,7 +7073,7 @@
         })
     }, Xm = function (a) {
         var b = /^[0-9!@#$\u20ac\u00a3%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
-        return 0 < a.length && !xe("gtx-bubble") && 500 > a.length && !b.test(a) && 400 < window.innerWidth
+        return 0 < a.length && 500 > a.length && !b.test(a) && 400 < window.innerWidth
     }, Vm = function (a, b) {
         var c = Fe(document, "div");
         c.id = "gtx-anchor";
