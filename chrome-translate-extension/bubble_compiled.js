@@ -7142,6 +7142,8 @@
                     gtxSourceAudioElement.style.opacity = oldOpacity;
                 }, 100);
             }
+        } else if (e.code === "KeyQ" || e.code === "Escape") {
+            window.g.H();
         }
     })
 })();
