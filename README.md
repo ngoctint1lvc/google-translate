@@ -1,6 +1,4 @@
-## Mod extensions
-
-### Chrome Translate
+## Chrome Translate
 Original version:
 - https://chromewebstore.google.com/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb
 
