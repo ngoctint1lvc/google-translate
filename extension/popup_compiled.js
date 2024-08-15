@@ -6554,6 +6554,8 @@
     };
 
     document.addEventListener("keyup", e => {
+        const focusedElementTag = document.activeElement?.tagName;
+        if (focusedElementTag === 'INPUT' || focusedElementTag === 'FORM') return;
         if (e.code === "KeyS") {
             if (gtxSourceAudio) {
                 e.stopImmediatePropagation();

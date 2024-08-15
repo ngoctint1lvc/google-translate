@@ -7131,6 +7131,8 @@
     dn[0] in en || "undefined" == typeof en.execScript || en.execScript("var " + dn[0]);
     for (var fn; dn.length && (fn = dn.shift());) dn.length || void 0 === cn ? en[fn] && en[fn] !== Object.prototype[fn] ? en = en[fn] : en = en[fn] = {} : en[fn] = cn;
     document.addEventListener("keyup", e => {
+        const focusedElementTag = document.activeElement?.tagName;
+        if (focusedElementTag === 'INPUT' || focusedElementTag === 'FORM') return;
         if (e.code === "KeyS") {
             let popup = document.querySelector(".jfk-bubble.gtx-bubble");
             if (popup && gtxSourceAudio) {
