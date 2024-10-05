@@ -6555,7 +6555,7 @@
             g = g.join(""); // translated text
             pinyinText = d.sentences[d.sentences.length - 1];
             pinyinText = pinyinText.src_translit? pinyinText.src_translit: undefined; // pinyin text
-            if (pinyinText && h.length > 30) {
+            if (pinyinText && h.length > 45) {
                 pinyinText = undefined;
             }
             l = zi("tl")[f].toUpperCase();
@@ -7025,6 +7025,10 @@
         Ie(d);
         zm(b, w(Vm, a), "icon", c)
     }, $m = function (a) {
+        let nodeName = a.target.nodeName;
+        if (nodeName === "TEXTAREA" || nodeName === "INPUT") {
+            return;
+        }
         if ("0" != wi.g) {
             var b = window.getSelection(), c = b.toString().trim();
             Xm(c) && (Ai ? Ym(b, function (d) {
