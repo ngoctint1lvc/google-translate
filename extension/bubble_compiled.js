@@ -7042,7 +7042,9 @@
             var d = a.innerText || a.textContent || "";
             d = decodeURIComponent(encodeURIComponent(d.trim()));
             chrome.i18n.detectLanguage(d, function (e) {
-                e.isReliable || e.languages.length === 1 ? c(e.languages[0].language) : c("auto")
+                let lang = e.isReliable || e.languages.length === 1 ? e.languages[0].language : "auto";
+                if (["zh", "en"].includes(lang)) c(lang)
+                else c("auto")
             })
         } else c("")
     }, Zm = function (a, b, c, d) {
@@ -7072,7 +7074,10 @@
         c = decodeURIComponent(encodeURIComponent(c));
         chrome.i18n.detectLanguage(c, function (d) {
             var e = null;
-            if (d.isReliable || d.languages.length === 1) return e = d.languages[0].language, b(e);
+            if (d.isReliable || d.languages.length === 1) {
+                e = d.languages[0].language
+                if (["zh", "en"].includes(e)) return b(e)
+            }
             b("auto")
         })
     }, Xm = function (a) {
